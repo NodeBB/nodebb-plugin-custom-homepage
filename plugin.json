@@ -1,0 +1,16 @@
+{
+	"id": "nodebb-plugin-custom-homepage",
+	"name": "Custom Homepage for NodeBB",
+	"description": "Allows you to define a custom homepage for NodeBB",
+	"url": "https://github.com/psychobunny/nodebb-plugin-custom-homepage",
+	"library": "./library.js",
+	"hooks": [
+		{
+			"hook": "action:app.load", "method": "init", "callbacked": true
+		},
+		{
+			"hook": "filter:header.build", "method": "addNavigation", "callbacked": true
+		}
+	],
+	"templates": "./templates"
+}
