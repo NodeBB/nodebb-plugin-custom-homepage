@@ -10,6 +10,9 @@
 		},
 		{
 			"hook": "filter:header.build", "method": "addNavigation", "callbacked": true
+		},
+		{
+			"hook": "filter:widgets.getAreas", "method": "defineWidgetAreas", "callbacked": true
 		}
 	],
 	"templates": "./templates"

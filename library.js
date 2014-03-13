@@ -30,5 +30,32 @@
 		callback(false, header);
 	};
 
+	Plugin.defineWidgetAreas = function(areas, callback) {
+		areas = areas.concat([
+			{
+				'name': 'Custom HP Header',
+				'template': 'home.tpl',
+				'location': 'hp-header'
+			},
+			{
+				'name': 'Custom HP Footer',
+				'template': 'home.tpl',
+				'location': 'hp-footer'
+			},
+			{
+				'name': 'Custom HP Sidebar',
+				'template': 'home.tpl',
+				'location': 'hp-sidebar'
+			},
+			{
+				'name': 'Custom HP Content',
+				'template': 'home.tpl',
+				'location': 'hp-content'
+			}
+		]);
+
+		callback(null, areas);
+	};
+
 	module.exports = Plugin;
 }(module));
