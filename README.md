@@ -1,4 +1,4 @@
-# NodeBB Featured Threads
+# Basic CMS plugin for NodeBB - custom homepage
 
 Allows you to define a custom homepage for NodeBB. The default template comes with four widget areas (main, sidebar, header, footer).
 
