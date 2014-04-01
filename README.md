@@ -4,7 +4,7 @@ Allows you to define a custom homepage for NodeBB. The default template comes wi
 
 ## Screenshots
 
-![homepage](http://i.imgur.com/dRnbAsQ.png)
+![homepage](http://i.imgur.com/GObRKQq.png)
 
 ## Installation
 
