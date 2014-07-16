@@ -9,7 +9,9 @@
 
     Plugin.init = function(app, middleware, controllers) {
     	app.get('/', middleware.buildHeader, renderHomepage);
-		app.get('/api/home', renderHomepage);
+		app.get('/api/home', function(req, res, next) {
+			res.json({});
+		});
 		app.get('/templates/home.tpl', renderHomepage);
 
 		app.get('/forum', middleware.buildHeader, controllers.home);
