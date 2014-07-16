@@ -1,4 +1,4 @@
-<div widget-area="hp-header" class="hidden">
+<div widget-area="hp-header">
 	<!-- BEGIN widgets -->
 	{widgets.html}
 	<!-- END widgets -->
@@ -6,14 +6,14 @@
 
 <div class="row">
 	<div class="col-md-9 col-xs-12">
-		<div widget-area="hp-content" class="hidden">
+		<div widget-area="hp-content">
 			<!-- BEGIN widgets -->
 			{widgets.html}
 			<!-- END widgets -->
 		</div>
 	</div>
 	<div class="col-md-3 col-xs-12">
-		<div widget-area="hp-sidebar" class="hidden">
+		<div widget-area="hp-sidebar">
 			<!-- BEGIN widgets -->
 			{widgets.html}
 			<!-- END widgets -->
@@ -21,7 +21,7 @@
 	</div>
 </div>
 
-<div widget-area="hp-footer" class="hidden">
+<div widget-area="hp-footer">
 	<!-- BEGIN widgets -->
 	{widgets.html}
 	<!-- END widgets -->
