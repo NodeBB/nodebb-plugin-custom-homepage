@@ -25,7 +25,7 @@
 					route: '/forum',
 					class: '',
 					text: "<i class=\"fa fa-fw fa-comments\" title=\"Forum\"></i>",
-					title: 'Forum'
+					title: ''
 				}
 			]
 		);
