@@ -6,7 +6,10 @@
 	"library": "./library.js",
 	"hooks": [
 		{
-			"hook": "action:app.load", "method": "init", "callbacked": true
+			"hook": "static:app.load", "method": "init"
+		},
+		{
+			"hook": "filter:templates.get_config", "method": "changeClientRouting"
 		},
 		{
 			"hook": "filter:header.build", "method": "addNavigation", "callbacked": true
