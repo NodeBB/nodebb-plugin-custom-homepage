@@ -18,22 +18,22 @@
 		res.render('homepage', {});
 	}
 
-    Plugin.init = function(app, middleware, controllers, callback) {
-    	// For some reason, the main / route cannot be overwritten without deleting it first
-    	unmount(app, '/');
+	Plugin.init = function(params, callback) {
+		// For some reason, the main / route cannot be overwritten without deleting it first
+		unmount(params.app, '/');
 
-    	app.get('/', middleware.buildHeader, renderHomepage);
-		app.get('/api/home', function(req, res, next) {
+		params.app.get('/', params.middleware.buildHeader, renderHomepage);
+		params.app.get('/api/home', function(req, res, next) {
 			res.json({});
 		});
 
-		app.get('/forum', middleware.buildHeader, controllers.home);
-		app.get('/api/forum', controllers.home);
+		params.app.get('/forum', params.middleware.buildHeader, params.controllers.home);
+		params.app.get('/api/forum', params.controllers.home);
 
-    	callback();
-    };
+	    	callback();
+    	};
 
-    Plugin.addNavigation = function(header, callback) {
+    	Plugin.addNavigation = function(header, callback) {
 		header.navigation.push(
 			{
 				route: '/forum',
