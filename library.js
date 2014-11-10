@@ -18,7 +18,11 @@
 		res.render('homepage', {});
 	}
 
-    Plugin.init = function(app, middleware, controllers, callback) {
+    Plugin.init = function(params, callback) {
+    	var app = params.app,
+			middleware = params.middleware,
+			controllers = params.controllers;
+			
     	// For some reason, the main / route cannot be overwritten without deleting it first
     	unmount(app, '/');
 
