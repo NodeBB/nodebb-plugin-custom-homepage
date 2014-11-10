@@ -12,10 +12,10 @@
 			"hook": "filter:templates.get_config", "method": "changeClientRouting"
 		},
 		{
-			"hook": "filter:header.build", "method": "addNavigation", "callbacked": true
+			"hook": "filter:header.build", "method": "addNavigation"
 		},
 		{
-			"hook": "filter:widgets.getAreas", "method": "defineWidgetAreas", "callbacked": true
+			"hook": "filter:widgets.getAreas", "method": "defineWidgetAreas"
 		}
 	],
 	"templates": "./templates"
