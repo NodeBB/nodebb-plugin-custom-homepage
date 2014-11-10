@@ -26,16 +26,16 @@
     	// For some reason, the main / route cannot be overwritten without deleting it first
     	unmount(app, '/');
 
-    	app.get('/', middleware.buildHeader, renderHomepage);
+		app.get('/', params.middleware.buildHeader, renderHomepage);
 		app.get('/api/home', function(req, res, next) {
 			res.json({});
 		});
 
-		app.get('/forum', middleware.buildHeader, controllers.home);
-		app.get('/api/forum', controllers.home);
+		app.get('/forum', params.middleware.buildHeader, params.controllers.home);
+		app.get('/api/forum', params.controllers.home);
 
-    	callback();
-    };
+		callback();
+	};
 
     Plugin.addNavigation = function(header, callback) {
 		header.navigation.push(
