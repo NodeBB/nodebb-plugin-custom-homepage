@@ -18,8 +18,5 @@
 			"hook": "filter:widgets.getAreas", "method": "defineWidgetAreas", "callbacked": true
 		}
 	],
-	"nbbpm": {
-		"compatibility": "^0.6.0"
-	},
 	"templates": "./templates"
 }
