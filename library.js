@@ -19,7 +19,7 @@
 	}
 
     Plugin.init = function(params, callback) {
-    	var app = params.app,
+    	var app = params.router,
 			middleware = params.middleware,
 			controllers = params.controllers;
 			
