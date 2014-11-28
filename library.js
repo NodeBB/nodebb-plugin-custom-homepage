@@ -7,13 +7,13 @@
 	        if (app.stack[i].route && app.stack[i].route.path == path) {
 	            app.stack.splice(i, 1);
 	            return true;
-	        };
+	        }
 	    }
 	    return false;
-	}
-
+	};
+	
 	var Plugin = {};
-
+	
 	function renderHomepage(req, res, next) {
 		res.render('homepage', {});
 	}
