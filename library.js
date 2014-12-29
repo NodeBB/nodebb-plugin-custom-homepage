@@ -1,30 +1,16 @@
 (function(module) {
 	"use strict";
 
-	// express removal of routes
-	var unmount = function (app, path) {
-	    for (var i = 0, len = app.stack.length; i < len; ++i) {
-	        if (app.stack[i].route && app.stack[i].route.path == path) {
-	            app.stack.splice(i, 1);
-	            return true;
-	        };
-	    }
-	    return false;
-	}
-
 	var Plugin = {};
 
 	function renderHomepage(req, res, next) {
 		res.render('homepage', {});
 	}
 
-    Plugin.init = function(params, callback) {
-    	var app = params.router,
+	Plugin.init = function(params, callback) {
+		var app = params.router,
 			middleware = params.middleware,
 			controllers = params.controllers;
-			
-    	// For some reason, the main / route cannot be overwritten without deleting it first
-    	unmount(app, '/');
 
 		app.get('/', params.middleware.buildHeader, renderHomepage);
 		app.get('/api/home', function(req, res, next) {
@@ -37,7 +23,7 @@
 		callback();
 	};
 
-    Plugin.addNavigation = function(header, callback) {
+	Plugin.addNavigation = function(header, callback) {
 		header.navigation.push(
 			{
 				route: '/forum',
