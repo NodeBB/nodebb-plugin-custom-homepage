@@ -65,12 +65,5 @@
 		callback(null, areas);
 	};
 
-	Plugin.changeClientRouting = function (config, callback) {
-		config.custom_mapping['^/?$'] = 'homepage';
-		config.custom_mapping['^forum?$'] = 'home';
-
-		callback(null, config);
-	};
-
 	module.exports = Plugin;
 }(module));
