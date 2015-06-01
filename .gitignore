@@ -216,3 +216,6 @@ pip-log.txt
 
 
 sftp-config.json
+
+#Node
+node_modules/

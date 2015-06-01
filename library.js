@@ -2,9 +2,19 @@
 	"use strict";
 
 	var Plugin = {};
+	var Meta = module.parent.require('./meta');
+	var Validator = require('validator');
 
 	function renderHomepage(req, res, next) {
 		res.render('homepage', {});
+	}
+
+	function renderDefaultSiteDescription(req, res, next) {
+		res.locals.metaTags = [{
+			name: "description",
+			content: Validator.escape(Meta.config.description || '')
+		}];
+		next();
 	}
 
 	Plugin.init = function(params, callback) {
@@ -12,7 +22,7 @@
 			middleware = params.middleware,
 			controllers = params.controllers;
 
-		app.get('/', params.middleware.buildHeader, renderHomepage);
+		app.get('/', renderDefaultSiteDescription, params.middleware.buildHeader, renderHomepage);
 		app.get('/api/home', function(req, res, next) {
 			res.json({});
 		});
