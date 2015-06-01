@@ -31,5 +31,8 @@
   "readme": "",
   "readmeFilename": "README.md",
   "_id": "nodebb-plugin-custom-homepage@0.0.1",
-  "_from": "nodebb-plugin-custom-homepage@~0.0.1"
+  "_from": "nodebb-plugin-custom-homepage@~0.0.1",
++  "dependencies": {
++    "validator": "^3.39.0"
++  }
 }
