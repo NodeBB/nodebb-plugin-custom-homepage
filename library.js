@@ -2,8 +2,16 @@
 	"use strict";
 
 	var Plugin = {};
-
-	// this method doesn't work
+	var Meta = module.parent.require('./meta');
++	var Validator = require('validator');
+	
+	function renderDefaultSiteDescription(req, res, next) {
++		res.locals.metaTags = [{
++			name: "description",
++			content: Validator.escape(Meta.config.description || '')
++		}];
++		next();
++	}
 
 	function renderHomepage(req, res, next) {
 		res.render('homepage', {
@@ -13,6 +21,7 @@
 		});
 	}
 
+	// this method doesn't work
 	// and I don't know how to make it work
 
 	Plugin.serveHomepage = function(params){
