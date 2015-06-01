@@ -2,34 +2,17 @@
 	"use strict";
 
 	var Plugin = {};
-	var Meta = module.parent.require('./meta');
-	var Validator = require('validator');
 
-	function renderDefaultSiteDescription(req, res, next) {
-		res.locals.metaTags = [{
-			name: "description",
-			content: Validator.escape(Meta.config.description || '')
-		}];
-		next();
-	}
+	// this method works now
 
-	function renderHomepage(req, res, next) {
-		res.render('homepage', {
+	Plugin.serveHomepage = function(params){
+		params.res.render('homepage', {
 			template: {
 				name: 'homepage'
 			}
 		});
-	}
-
-	// this method doesn't work
-	// and I don't know how to make it work
-	// but it would be the preferred way
-
-	Plugin.serveHomepage = function(params){
-		renderHomepage(params.req, params.res, params.next);
 	};
 
-	// this actually does work, but is useless without the above stuff working
 	Plugin.addListing = function(data, callback){
 		data.routes.push({
 			route: 'customHP',
@@ -38,27 +21,7 @@
 		callback(null, data);
 	};
 
-	// *sigh*
-
-	Plugin.init = function(params, callback) {
-		var app = params.router;
-
-		app.get('/', renderDefaultSiteDescription, params.middleware.buildHeader, renderHomepage);
-		app.get('/api/', function(req, res, next) {
-			res.json({
-				template: {
-					name: 'homepage'
-				}
-			});
-		});
-
-		/* no longer necessary because of categories path
-		app.get('/forum', params.middleware.buildHeader, params.controllers.home);
-		app.get('/api/forum', params.controllers.home);
-		*/
-
-		callback();
-	};
+	// yay
 
 	Plugin.addNavigation = function(header, callback) {
 		header.navigation.push(
@@ -101,6 +64,47 @@
 
 		callback(null, areas);
 	};
+
+	// trash
+
+	/* don't think this is necessary anymore either
+
+	var Meta = module.parent.require('./meta');
+	var Validator = require('validator');
+
+	function renderDefaultSiteDescription(req, res, next) {
+		res.locals.metaTags = [{
+			name: "description",
+			content: Validator.escape(Meta.config.description || '')
+		}];
+		next();
+	}
+
+	*/
+
+	/* don't even need the init hook anymore
+
+	Plugin.init = function(params, callback) {
+		var app = params.router;
+
+		// app.get('/', renderDefaultSiteDescription, params.middleware.buildHeader, renderHomepage);
+		// app.get('/api/', function(req, res, next) {
+		// 	res.json({
+		// 		template: {
+		// 			name: 'homepage'
+		// 		}
+		// 	});
+		// });
+
+		no longer necessary because of categories path
+		app.get('/forum', params.middleware.buildHeader, params.controllers.home);
+		app.get('/api/forum', params.controllers.home);
+
+
+		callback();
+	};
+
+	*/
 
 	module.exports = Plugin;
 }(module));

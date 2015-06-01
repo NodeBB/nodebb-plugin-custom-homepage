@@ -6,9 +6,6 @@
 	"library": "./library.js",
 	"hooks": [
 		{
-			"hook": "static:app.load", "method": "init"
-		},
-		{
 			"hook": "filter:header.build", "method": "addNavigation"
 		},
 		{
