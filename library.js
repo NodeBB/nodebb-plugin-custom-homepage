@@ -37,7 +37,7 @@
 
 		// this works
 
-		app.get('/', middleware.buildHeader, renderHomepage);
+		app.get('/', renderDefaultSiteDescription, middleware.buildHeader, renderHomepage);
 
 		app.get('/api/', function(req, res, next) {
 			res.json({
