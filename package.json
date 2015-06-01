@@ -2,7 +2,7 @@
   "name": "nodebb-plugin-custom-homepage",
   "version": "0.1.17",
   "description": "Allows you to define a custom homepage for NodeBB",
-  "main": "library.js",
+  "main": "./library.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

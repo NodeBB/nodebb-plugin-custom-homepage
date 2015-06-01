@@ -5,10 +5,6 @@
 	var Meta = module.parent.require('./meta');
 	var Validator = require('validator');
 
-	function renderHomepage(req, res, next) {
-		res.render('homepage', {});
-	}
-
 	function renderDefaultSiteDescription(req, res, next) {
 		res.locals.metaTags = [{
 			name: "description",
@@ -17,18 +13,49 @@
 		next();
 	}
 
+	function renderHomepage(req, res, next) {
+		res.render('homepage', {
+			template: {
+				name: 'homepage'
+			}
+		});
+	}
+
+	// this method doesn't work
+	// and I don't know how to make it work
+	// but it would be the preferred way
+
+	Plugin.serveHomepage = function(params){
+		renderHomepage(params.req, params.res, params.next);
+	};
+
+	// this actually does work, but is useless without the above stuff working
+	Plugin.addListing = function(data, callback){
+		data.routes.push({
+			route: 'customHP',
+			name: 'Custom Homepage'
+		});
+		callback(null, data);
+	};
+
+	// *sigh*
+
 	Plugin.init = function(params, callback) {
-		var app = params.router,
-			middleware = params.middleware,
-			controllers = params.controllers;
+		var app = params.router;
 
 		app.get('/', renderDefaultSiteDescription, params.middleware.buildHeader, renderHomepage);
-		app.get('/api/home', function(req, res, next) {
-			res.json({});
+		app.get('/api/', function(req, res, next) {
+			res.json({
+				template: {
+					name: 'homepage'
+				}
+			});
 		});
 
+		/* no longer necessary because of categories path
 		app.get('/forum', params.middleware.buildHeader, params.controllers.home);
 		app.get('/api/forum', params.controllers.home);
+		*/
 
 		callback();
 	};
@@ -36,7 +63,7 @@
 	Plugin.addNavigation = function(header, callback) {
 		header.navigation.push(
 			{
-				route: '/forum',
+				route: '/categories',
 				class: '',
 				text: 'Forum',
 				iconClass: 'fa-comments',
@@ -45,7 +72,7 @@
 			}
 		);
 
-		callback(false, header);
+		callback(null, header);
 	};
 
 	Plugin.defineWidgetAreas = function(areas, callback) {
