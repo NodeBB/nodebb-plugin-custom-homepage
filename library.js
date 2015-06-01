@@ -15,8 +15,8 @@
 
 	// and I don't know how to make it work
 
-	Plugin.serveHomepage = function(server, callback){
-		renderHomepage(server.req, server.res, callback);
+	Plugin.serveHomepage = function(params){
+		renderHomepage(server.req, server.res, params.next);
 	};
 	
 	// *sigh*
