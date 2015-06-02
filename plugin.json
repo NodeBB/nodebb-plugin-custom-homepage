@@ -6,13 +6,16 @@
 	"library": "./library.js",
 	"hooks": [
 		{
-			"hook": "static:app.load", "method": "init"
-		},
-		{
 			"hook": "filter:header.build", "method": "addNavigation"
 		},
 		{
 			"hook": "filter:widgets.getAreas", "method": "defineWidgetAreas"
+		},
+		{
+			"hook": "action:homepage.get:customHP", "method": "serveHomepage"
+		},
+		{
+			"hook": "filter:homepage.get", "method": "addListing"
 		}
 	],
 	"templates": "./templates"

@@ -2,41 +2,27 @@
 	"use strict";
 
 	var Plugin = {};
-	var Meta = module.parent.require('./meta');
-	var Validator = require('validator');
 
-	function renderHomepage(req, res, next) {
-		res.render('homepage', {});
-	}
-
-	function renderDefaultSiteDescription(req, res, next) {
-		res.locals.metaTags = [{
-			name: "description",
-			content: Validator.escape(Meta.config.description || '')
-		}];
-		next();
-	}
-
-	Plugin.init = function(params, callback) {
-		var app = params.router,
-			middleware = params.middleware,
-			controllers = params.controllers;
-
-		app.get('/', renderDefaultSiteDescription, params.middleware.buildHeader, renderHomepage);
-		app.get('/api/home', function(req, res, next) {
-			res.json({});
+	Plugin.serveHomepage = function(params){
+		params.res.render('homepage', {
+			template: {
+				name: 'homepage'
+			}
 		});
+	};
 
-		app.get('/forum', params.middleware.buildHeader, params.controllers.home);
-		app.get('/api/forum', params.controllers.home);
-
-		callback();
+	Plugin.addListing = function(data, callback){
+		data.routes.push({
+			route: 'customHP',
+			name: 'Custom Homepage'
+		});
+		callback(null, data);
 	};
 
 	Plugin.addNavigation = function(header, callback) {
 		header.navigation.push(
 			{
-				route: '/forum',
+				route: '/categories',
 				class: '',
 				text: 'Forum',
 				iconClass: 'fa-comments',
@@ -45,7 +31,7 @@
 			}
 		);
 
-		callback(false, header);
+		callback(null, header);
 	};
 
 	Plugin.defineWidgetAreas = function(areas, callback) {
