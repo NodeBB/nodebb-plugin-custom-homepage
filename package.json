@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-custom-homepage",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Allows you to define a custom homepage for NodeBB",
   "main": "./library.js",
   "scripts": {
