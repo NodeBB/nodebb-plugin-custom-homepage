@@ -19,21 +19,6 @@
 		callback(null, data);
 	};
 
-	Plugin.addNavigation = function(header, callback) {
-		header.navigation.push(
-			{
-				route: '/categories',
-				class: '',
-				text: 'Forum',
-				iconClass: 'fa-comments',
-				title: 'Forum',
-				textClass: 'visible-xs-inline'
-			}
-		);
-
-		callback(null, header);
-	};
-
 	Plugin.defineWidgetAreas = function(areas, callback) {
 		areas = areas.concat([
 			{
