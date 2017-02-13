@@ -20,6 +20,6 @@ Or install via the Admin Control Panel and restart NodeBB.
 
 A new entry will be available under ACP -> General -> Home Page called "Custom Homepage". Set this and hit save.
 
-### Adding a menu item to the homepage
+### Adding a menu item to the navbar
 
-Add a navigation icon to the homepage on the menu via ACP -> General -> Navigation. Under `route`, enter `/`. 
+Add a navigation icon to the navbar on the menu via ACP -> General -> Navigation. Under `route`, enter `/`. 
